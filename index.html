@@ -1,1 +1,923 @@
-HI
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boney Apparels LLP | Premium Kids Apparel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary: #FF6B9D;
+      --secondary: #7C3AED;
+      --accent: #06B6D4;
+      --warm: #F59E0B;
+      --dark: #1E293B;
+      --light: #F8FAFC;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      color: var(--dark);
+    }
+    
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #fce4ec, #e3f2fd, #f3e5f5, #e8f5e9);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after { width: 100%; }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      color: #64748B;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 10px 30px rgba(255,107,157,0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255,107,157,0.4);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--dark);
+      border: 2px solid #E2E8F0;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 100px 5%;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: #64748B;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+      color: #64748B;
+      line-height: 1.7;
+    }
+    
+    /* Portfolio Section */
+    .portfolio {
+      padding: 100px 5%;
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      transform: translateY(0);
+    }
+    
+    .portfolio-overlay h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .portfolio-overlay p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* About Section */
+    .about {
+      padding: 100px 5%;
+      background: rgba(255,255,255,0.7);
+    }
+    
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: linear-gradient(135deg, var(--warm), #EF4444);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(245,158,11,0.3);
+    }
+    
+    .about-badge .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-content p {
+      color: #64748B;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    
+    .stat .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .stat .label {
+      font-size: 0.85rem;
+      color: #64748B;
+      margin-top: 0.5rem;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 100px 5%;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+    
+    .service-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    
+    .service-content {
+      padding: 2rem;
+    }
+    
+    .service-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .service-content p {
+      color: #64748B;
+      line-height: 1.7;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 100px 5%;
+      background: linear-gradient(135deg, var(--dark), #334155);
+      color: white;
+    }
+    
+    .contact .section-header h2 {
+      color: white;
+    }
+    
+    .contact .section-header p {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateX(10px);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    
+    .contact-form {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    /* Footer */
+    footer {
+      background: #0F172A;
+      color: white;
+      padding: 60px 5% 30px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .footer-brand p {
+      color: rgba(255,255,255,0.6);
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    
+    .footer-column h4 {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-column ul a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-column ul a:hover {
+      color: var(--primary);
+    }
+    
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+    
+    .made-in-india {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FF9933, #FFFFFF, #138808);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.5rem; }
+      .about-container { grid-template-columns: 1fr; }
+      .contact-container { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr 1fr; }
+    }
+    
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .about-stats { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg"></div>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <img src="pic.jpg" alt="Boney Apparels Logo">
+      <span class="logo-text">Boney Apparels</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Why Us</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-badge">🇮🇳 Proudly Made in India</span>
+      <h1>Premium Kids Apparel for <span>Little Stars</span></h1>
+      <p>Crafting comfortable, stylish, and allergy-free clothing for babies aged 0-5 years. From our design studios to your doorstep, we deliver excellence in every stitch.</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Get in Touch →</a>
+        <a href="#portfolio" class="btn btn-secondary">View Collection</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <h2>Why Choose Boney Apparels?</h2>
+      <p>We combine traditional craftsmanship with modern design to create the perfect wardrobe for your little ones</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FFE4E6, #FFF);">👶</div>
+        <h3>Baby-Safe Materials</h3>
+        <p>100% hypoallergenic, skin-friendly fabrics tested for safety. Gentle on your baby's delicate skin.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #E0E7FF, #FFF);">🎨</div>
+        <h3>In-House Designers</h3>
+        <p>Our creative team designs trendy, age-appropriate styles that kids love and parents approve.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #D1FAE5, #FFF);">🏭</div>
+        <h3>Own Manufacturing</h3>
+        <p>Complete control over quality with our own factories ensuring every piece meets our high standards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FEF3C7, #FFF);">🚚</div>
+        <h3>Pan-India Distribution</h3>
+        <p>Distribution centers across India ensuring quick delivery to every corner of the country.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FCE7F3, #FFF);">🌍</div>
+        <h3>Global Exports</h3>
+        <p>Sharing Indian craftsmanship with the world through our growing export network.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #CFFAFE, #FFF);">✨</div>
+        <h3>Premium Quality</h3>
+        <p>Sourcing the finest materials from across India to create durable, comfortable clothing.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-header">
+      <h2>Our Little Stars</h2>
+      <p>See how our apparel brings joy to children in every moment of their precious journey</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=450&fit=crop" alt="Baby playing">
+        <div class="portfolio-overlay">
+          <h4>Playtime Collection</h4>
+          <p>Comfortable wear for active moments</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=450&fit=crop" alt="Child dancing">
+        <div class="portfolio-overlay">
+          <h4>Dance & Fun</h4>
+          <p>Flexible, breathable party wear</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=450&fit=crop" alt="Kids in classroom">
+        <div class="portfolio-overlay">
+          <h4>School Ready</h4>
+          <p>Smart casual for little learners</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1504151932400-72d4384f04b3?w=600&h=450&fit=crop" alt="Birthday celebration">
+        <div class="portfolio-overlay">
+          <h4>Birthday Specials</h4>
+          <p>Adorable outfits for celebrations</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=450&fit=crop" alt="Parent with child">
+        <div class="portfolio-overlay">
+          <h4>Family Moments</h4>
+          <p>Matching outfits for special bonds</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=600&h=450&fit=crop" alt="Baby photoshoot">
+        <div class="portfolio-overlay">
+          <h4>Photoshoot Ready</h4>
+          <p>Picture-perfect styling</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=500&fit=crop" alt="Happy children">
+        <div class="about-badge">
+          <div class="number">0-5</div>
+          <div>Years Age Range</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <h2>Crafting Comfort Since Day One</h2>
+        <p>At Boney Apparels LLP, we understand that your child's comfort is your priority. That's why we've built an end-to-end ecosystem – from sourcing premium materials across India to designing, manufacturing, and distributing right to your doorstep.</p>
+        <p>Our in-house team of designers, skilled artisans, and quality experts work together to create clothing that's not just beautiful but safe, comfortable, and durable. Every fabric is tested for allergens, every stitch is inspected for quality.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="number">50+</div>
+            <div class="label">Distribution Centers</div>
+          </div>
+          <div class="stat">
+            <div class="number">10+</div>
+            <div class="label">Export Countries</div>
+          </div>
+          <div class="stat">
+            <div class="number">100%</div>
+            <div class="label">Made in India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <h2>What We Offer</h2>
+      <p>Complete solutions for kids' apparel needs</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-image">👗</div>
+        <div class="service-content">
+          <h3>Custom Manufacturing</h3>
+          <p>Partner with us for bulk orders with customized designs, sizes, and branding for your retail business.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-image" style="background: linear-gradient(135deg, var(--accent), var(--secondary));">📦</div>
+        <div class="service-content">
+          <h3>Wholesale Distribution</h3>
+          <p>Access our extensive catalog at wholesale prices with reliable delivery across India.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-image" style="background: linear-gradient(135deg, var(--warm), var(--primary));">🌐</div>
+        <div class="service-content">
+          <h3>Export Services</h3>
+          <p>Quality Indian craftsmanship delivered globally with proper certifications and compliance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <h2>Let's Connect</h2>
+      <p>Ready to dress your little ones in the finest? Reach out to us!</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Call Us</strong>
+            <p>+91 6238198456</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <strong>Email Us</strong>
+            <p>info@boneyapparels.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Location</strong>
+            <p>Pan-India Presence</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="pic.jpg" alt="Boney Apparels Logo" style="width: 40px; height: 40px;">
+          <span class="logo-text" style="color: white; -webkit-text-fill-color: white;">Boney Apparels LLP</span>
+        </div>
+        <p>Premium kids apparel manufacturer and distributor. Creating comfortable, stylish, and safe clothing for children aged 0-5 years.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Why Us</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Manufacturing</a></li>
+          <li><a href="#services">Distribution</a></li>
+          <li><a href="#services">Exports</a></li>
+          <li><a href="#contact">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+916238198456">+91 6238198456</a></li>
+          <li><a href="mailto:info@boneyapparels.com">Email Us</a></li>
+          <li><a href="#contact">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Boney Apparels LLP. All Rights Reserved.</p>
+      <div class="made-in-india">🇮🇳 Made with ❤️ in India</div>
+    </div>
+  </footer>
+</body>
+</html>
